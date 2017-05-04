@@ -1,19 +1,37 @@
 
 // trim
 
+
 function trim(str) {
-    var trimmed = false;
-    while (!trimmed) {
-        var len = str.length;
-        if (str.slice(0, 1) == " ") {
-            str = str.slice(1);
+    var done = false;
+    var len;
+    while (!done) {
+        len = str.length;
+	str = checkFirst(str);
+    }
+
+    function checkFirst(strF) {
+        if (strF.charCodeAt(0) < 33) {
+            strF = strF.slice(1);
         }
-        if (str.slice(-1) == " ") {
-            str = str.slice(0, str.length - 1);
+        strF = checkLast(strF);
+        return strF;
+    }
+
+    function checkLast(strL) {
+        if (strL.charCodeAt(strL.length - 1) < 33) {
+            strL = strL.slice(0, strL.length - 1);
         }
-        if (str.length == len) {
-            trimmed = true;
+        checkIfDone(strL);
+        return strL;
+    }
+
+    function checkIfDone(strD) {
+        if (strD.length === len) {
+            done = true;
+		alert(done);
         }
     }
+
     return str;
 }
