@@ -29,7 +29,6 @@ function trim(str) {
     function checkIfDone(strD) {
         if (strD.length === len) {
             done = true;
-		alert(done);
         }
     }
 
