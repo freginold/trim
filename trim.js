@@ -1,36 +1,23 @@
 
 // trim
 
-
-function trim(str) {
-    var done = false;
-    var len;
-    while (!done) {
-        len = str.length;
-	str = checkFirst(str);
-    }
-
+function trim(str) { 
+    ((typeof(str)).toLowerCase() === "string") ? str = checkLast(checkFirst(str)) : (
+        console.log("Argument is not a string. Nothing to trim."),
+        str = false);
+    return str;
     function checkFirst(strF) {
         if (strF.charCodeAt(0) < 33) {
-            strF = strF.slice(1);
+            strF = strF.substr(1);
+            strF = checkFirst(strF);
         }
-        strF = checkLast(strF);
         return strF;
     }
-
     function checkLast(strL) {
         if (strL.charCodeAt(strL.length - 1) < 33) {
-            strL = strL.slice(0, strL.length - 1);
+            strL = strL.substr(0, strL.length - 1);
+            strL = checkLast(strL);
         }
-        checkIfDone(strL);
         return strL;
     }
-
-    function checkIfDone(strD) {
-        if (strD.length === len) {
-            done = true;
-        }
-    }
-
-    return str;
 }
