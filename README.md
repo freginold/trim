@@ -6,4 +6,4 @@ A basic JavaScript trim function to remove lead and trail white space and contro
 trim(inputString);
 ```
 
-If the argument passed in (`inputString`) is not a string, an error message will be output to the console and the unchanged argument will be returned.
+If `inputString` is not a string, an error message will be output to the console and the unchanged argument will be returned.
